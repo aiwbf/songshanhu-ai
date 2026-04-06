@@ -1,0 +1,220 @@
+[
+  {
+    "case_id": "demo-01",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#6",
+    "question": "父母不在松山湖工作，且户籍不在松山湖，孩子户籍在松山湖（户籍跟爷爷），父母园区没有房产（房产属于爷爷）属于哪类？",
+    "profile": {},
+    "expected_primary": "A1",
+    "expected_candidates": ["A1"],
+    "expected_intent": "case_classification",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-02",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#3",
+    "question": "A3类中“学童和父（母）是松山湖家庭户，但学童与房产所有人非直系亲属关系”是什么意思？",
+    "profile": {
+      "child_hukou": "松山湖家庭户",
+      "property_location": "松山湖",
+      "property_owner_relation": "非直系亲属"
+    },
+    "expected_primary": "A3",
+    "expected_candidates": ["A3"],
+    "expected_intent": "case_classification",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-03",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#64",
+    "question": "A2类：礼宾路2号人才集体户人员所需资料？",
+    "profile": {},
+    "expected_primary": "A2",
+    "expected_candidates": ["A2"],
+    "expected_intent": "materials",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-04",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#67",
+    "question": "小孩户口在国内非东莞市，家长在园区工作，工作时间一年以上，且所在单位根据有关规定具有入学指标，家长获得此入学指标。具体是否有指标请咨询所在企业（单位）。所需资料?",
+    "profile": {},
+    "expected_primary": "B1",
+    "expected_candidates": ["B1"],
+    "expected_intent": "materials",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-05",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#68",
+    "question": "B2.2企业人才:小孩户口非东莞市，家长达到人才标准，在园区工作，工作时间半年以上。准详见《申请指南》所需资料?",
+    "profile": {},
+    "expected_primary": "B2",
+    "expected_candidates": ["B2"],
+    "expected_intent": "materials",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-06",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#69",
+    "question": "B3积分制人才",
+    "profile": {
+      "stage": "小学一年级",
+      "child_hukou": "非东莞",
+      "work_location": "松山湖",
+      "preferential_statuses": []
+    },
+    "expected_primary": "B3",
+    "expected_candidates": ["B3", "C"],
+    "expected_intent": "case_classification",
+    "expected_status": "need_follow_up"
+  },
+  {
+    "case_id": "demo-07",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#4",
+    "question": "父母不在松山湖工作，全家户籍都不在松山湖，但在园区有房产，属于哪类？",
+    "profile": {
+      "child_hukou": "非东莞"
+    },
+    "expected_primary": "C",
+    "expected_candidates": ["C"],
+    "expected_intent": "case_classification",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-08",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#46",
+    "question": "台湾籍子女入学怎样申请？",
+    "profile": {
+      "work_location": "松山湖"
+    },
+    "expected_primary": "台湾学生",
+    "expected_candidates": ["B2"],
+    "expected_intent": "case_classification",
+    "expected_status": "need_follow_up"
+  },
+  {
+    "case_id": "demo-09",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#47",
+    "question": "华人华侨子女如何申请园区学位？",
+    "profile": {},
+    "expected_primary": "华侨华人",
+    "expected_candidates": [],
+    "expected_intent": "case_classification",
+    "expected_status": "need_follow_up"
+  },
+  {
+    "case_id": "demo-10",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#57",
+    "question": "孩子是香港/澳门户籍，父母服务地/居住地/户籍地在松山湖或在松山湖拥有产权清晰的自有居所，如何申请入学？",
+    "profile": {
+      "child_hukou": "香港",
+      "guardian_hukou": "松山湖",
+      "work_location": "松山湖",
+      "property_location": "松山湖"
+    },
+    "expected_primary": "香港/澳门学童",
+    "expected_candidates": ["B3", "C"],
+    "expected_intent": "case_classification",
+    "expected_status": "need_follow_up"
+  },
+  {
+    "case_id": "demo-11",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#14",
+    "question": "怎么知道我的房子是否被锁定？",
+    "profile": {},
+    "expected_primary": "房产锁定",
+    "expected_candidates": [],
+    "expected_intent": "property_lock",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-12",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#15",
+    "question": "如何对学位申请房进行解锁？",
+    "profile": {},
+    "expected_primary": "房产解锁",
+    "expected_candidates": [],
+    "expected_intent": "property_unlock",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-13",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#22",
+    "question": "哪种类型所在的单位需注册单位账号？",
+    "profile": {},
+    "expected_primary": "单位账号注册与审核",
+    "expected_candidates": [],
+    "expected_intent": "unit_account",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-14",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#23",
+    "question": "如何申请企业账号？",
+    "profile": {},
+    "expected_primary": "单位账号注册与审核",
+    "expected_candidates": [],
+    "expected_intent": "unit_account",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-15",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#24",
+    "question": "申请注册开通企业账号后，管理员需要做什么？",
+    "profile": {},
+    "expected_primary": "单位账号注册与审核",
+    "expected_candidates": [],
+    "expected_intent": "unit_account",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-16",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#21",
+    "question": "A2，B类提交报名申请后需要做什么工作？",
+    "profile": {},
+    "expected_primary": "单位账号注册与审核",
+    "expected_candidates": [],
+    "expected_intent": "unit_account",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-17",
+    "source_ref": "答疑｜有关2024松山湖秋季招生，你可能想知道这些（二）#12",
+    "question": "报名时，我发现我上传的资料有误，如何进行修改？",
+    "profile": {},
+    "expected_primary": "报名资料修改",
+    "expected_candidates": [],
+    "expected_intent": "application_edit",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-18",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#63",
+    "question": "A1类：小孩户籍在松山湖，家长在松山湖有房产，而且户口落在房产所需资料？",
+    "profile": {},
+    "expected_primary": "A1",
+    "expected_candidates": ["A1"],
+    "expected_intent": "materials",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-19",
+    "source_ref": "答疑｜有关2024松山湖秋季招生，你可能想知道这些#3",
+    "question": "我有优才卡，工作地在松山湖，可以申请松山湖的学位吗？",
+    "profile": {},
+    "expected_primary": "B2",
+    "expected_candidates": ["B2"],
+    "expected_intent": "case_classification",
+    "expected_status": "classified"
+  },
+  {
+    "case_id": "demo-20",
+    "source_ref": "机器人业务文档（2024合并修订版）.csv#48",
+    "question": "在松山湖报名读书需要什么资料？",
+    "profile": {},
+    "expected_primary": "UNRESOLVED",
+    "expected_candidates": [],
+    "expected_intent": "materials",
+    "expected_status": "need_follow_up"
+  }
+]

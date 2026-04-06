@@ -1,0 +1,66 @@
+categories:
+  - code: A1
+    display_name: A1
+    policy_mapping_status: pending_official_mapping
+    required_facts: []
+    predicates: []
+
+  - code: A2
+    display_name: A2
+    policy_mapping_status: pending_official_mapping
+    required_facts: []
+    predicates: []
+
+  - code: A3
+    display_name: A3
+    policy_mapping_status: pending_official_mapping
+    required_facts: []
+    predicates: []
+
+  - code: B1
+    display_name: B1
+    policy_mapping_status: pending_official_mapping
+    required_facts: []
+    predicates: []
+
+  - code: B2
+    display_name: B2
+    policy_mapping_status: pending_official_mapping
+    required_facts: []
+    predicates: []
+
+  - code: B3
+    display_name: B3
+    policy_mapping_status: pending_official_mapping
+    required_facts: []
+    predicates: []
+
+  - code: C
+    display_name: C
+    policy_mapping_status: pending_official_mapping
+    required_facts: []
+    predicates: []
+
+special_program_tags:
+  - key: talent_card
+    display_name: 优才卡
+  - key: guangdong_talent_card
+    display_name: 优粤卡
+  - key: overseas_chinese
+    display_name: 华侨华人
+  - key: taiwan_student
+    display_name: 台湾学生
+  - key: hk_macao_child
+    display_name: 香港/澳门学童
+  - key: points_admission
+    display_name: 积分入学
+  - key: property_lock
+    display_name: 房产锁定
+  - key: property_unlock
+    display_name: 房产解锁
+  - key: profile_update
+    display_name: 资料修改
+  - key: unit_account_registration
+    display_name: 单位账号注册
+  - key: unit_admin_review
+    display_name: 单位管理员审核

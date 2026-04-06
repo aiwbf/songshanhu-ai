@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+.venv/
+*.pyc
+data/generated/
+.env
+data/runtime/
+output/
+tmp/
+.tmp_*
+tmp_response.json

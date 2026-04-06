@@ -1,0 +1,27 @@
+{
+  "allowlist": {
+    "enabled": true,
+    "default_open_mode": false,
+    "protected_channels": ["wechat", "feishu"],
+    "targets": {
+      "feishu": ["oc_test", "招生咨询私聊"],
+      "wechat": ["oc_test"]
+    }
+  },
+  "group": {
+    "require_mention": true,
+    "channels": ["wechat", "feishu"]
+  },
+  "pairing": {
+    "enabled": true,
+    "channels": ["wechat", "feishu"]
+  },
+  "fallback": {
+    "mode": "safe_handoff",
+    "allow_direct_answer": false
+  },
+  "routing": {
+    "session_key_fields": ["channel", "target", "conversation_id", "thread_id", "sender_id"],
+    "allow_cross_channel_thread_reuse": false
+  }
+}

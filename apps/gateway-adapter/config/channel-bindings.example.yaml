@@ -1,0 +1,75 @@
+profiles:
+  - agent_profile_id: parent-default
+    mode: dm
+    description: Default consultation profile for parent private chats.
+    knowledge_scopes:
+      - public-policy
+      - faq
+    rule_scopes:
+      - admissions-default
+
+  - agent_profile_id: parent-group-guarded
+    mode: group
+    description: Group profile with mention gate and stricter fallback.
+    knowledge_scopes:
+      - public-policy
+      - faq
+    rule_scopes:
+      - admissions-default
+
+  - agent_profile_id: ops-admin
+    mode: admin
+    description: Internal operations and manual handoff profile.
+    knowledge_scopes:
+      - ops-playbook
+      - public-policy
+    rule_scopes:
+      - admissions-default
+
+  - agent_profile_id: degraded-template
+    mode: dm
+    description: Safe fallback profile when upstream services are unavailable.
+    knowledge_scopes: []
+    rule_scopes: []
+
+bindings:
+  - binding_id: wechat-dm-default
+    channel: openclaw:wechat
+    scope: dm
+    peer_selector:
+      peer_ids:
+        - "*"
+    agent_profile_id: parent-default
+    fallback_agent_profile_id: degraded-template
+    pairing: enabled
+    allowlist: []
+    require_mention: false
+
+  - binding_id: wechat-parent-group
+    channel: openclaw:wechat
+    scope: group
+    peer_selector:
+      group_ids:
+        - parent-group-001
+    agent_profile_id: parent-group-guarded
+    fallback_agent_profile_id: degraded-template
+    pairing: opt_in
+    allowlist:
+      - ops-001
+      - ops-002
+    require_mention: true
+
+  - binding_id: feishu-admin-console
+    channel: openclaw:feishu
+    scope: admin
+    peer_selector:
+      peer_ids:
+        - admissions-ops-console
+    agent_profile_id: ops-admin
+    fallback_agent_profile_id: degraded-template
+    pairing: strict
+    allowlist:
+      - ops-001
+      - ops-002
+      - ops-003
+    require_mention: false

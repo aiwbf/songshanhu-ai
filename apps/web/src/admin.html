@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>松山湖入学咨询 | 运营后台</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="admin-page">
+    <div id="adminLoginShell" class="admin-login-shell">
+      <section class="brand-card admin-auth-card">
+        <p class="eyebrow">Operations Console</p>
+        <h1>运营后台登录</h1>
+        <p class="subtitle">
+          登录后可查看会话记录、人工接管队列、FAQ 别名和修复沉淀。后台不会在未登录前直接加载运营数据。
+        </p>
+        <form id="adminLoginForm" class="form-stack">
+          <label>
+            <span class="mini-label">用户名</span>
+            <input id="adminUsername" name="username" type="text" value="admin" autocomplete="username" required />
+          </label>
+          <label>
+            <span class="mini-label">密码</span>
+            <input id="adminPassword" name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <p id="adminLoginHint" class="meta-copy">请输入后台账号和密码。</p>
+          <div class="toolbar-row">
+            <button id="adminLoginSubmit" class="primary-button" type="submit">登录后台</button>
+            <a class="page-link" href="/">返回咨询前台</a>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div id="adminAppShell" class="page-shell hidden" hidden>
+      <aside class="sidebar">
+        <section class="brand-card">
+          <p class="eyebrow">Operations Console</p>
+          <h1>松山湖入学咨询后台</h1>
+          <p class="subtitle">
+            会话接管、知识修订、坏案例沉淀和 OpenClaw 渠道来源都在同一块工作台里处理。
+          </p>
+          <div class="toolbar-row">
+            <a class="page-link" href="/">返回咨询前台</a>
+            <button id="refreshDashboardBtn" class="ghost-button" type="button">刷新看板</button>
+            <button id="adminLogoutBtn" class="secondary-button" type="button">退出登录</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="section-kicker">关键指标</p>
+              <h2>运营概览</h2>
+            </div>
+          </div>
+          <div class="metric-grid" id="metricGrid"></div>
+        </section>
+
+        <section class="panel queue-panel">
+          <div class="panel-head">
+            <div>
+              <p class="section-kicker">人工接管队列</p>
+              <h2>待关注会话</h2>
+            </div>
+          </div>
+          <div id="takeoverQueue" class="list-stack"></div>
+        </section>
+      </aside>
+
+      <main class="main-shell admin-main-shell">
+        <section class="hero compact-hero admin-hero">
+          <div class="toolbar">
+            <div>
+              <p class="eyebrow">Admin Workspace</p>
+              <h2>单屏工作台</h2>
+            </div>
+            <div class="status-row">
+              <span class="pill accent">会话可追踪</span>
+              <span class="pill accent">支持人工接管</span>
+              <span class="pill accent">支持 FAQ / 修复沉淀</span>
+            </div>
+          </div>
+          <p class="hero-copy">
+            后台固定在一屏内操作，列表和详情各自滚动，登录后才会加载运营数据。
+          </p>
+        </section>
+
+        <section class="panel admin-workspace">
+          <div class="panel-head workspace-head">
+            <div>
+              <p class="section-kicker">单屏工作区</p>
+              <h2>会话、运营、修复</h2>
+            </div>
+            <div class="tab-group workspace-tabs" id="adminWorkspaceTabs">
+              <button class="tab-button active" type="button" data-tab="conversations">会话</button>
+              <button class="tab-button" type="button" data-tab="ops">运营</button>
+              <button class="tab-button" type="button" data-tab="repair">修复</button>
+            </div>
+          </div>
+
+          <div class="admin-tab-panels">
+            <section class="admin-tab-panel active" data-tab-panel="conversations">
+              <div class="admin-grid">
+                <section class="panel inner-panel">
+                  <div class="panel-head">
+                    <div>
+                      <p class="section-kicker">会话记录列表</p>
+                      <h2>全部咨询会话</h2>
+                    </div>
+                    <span id="conversationCount" class="metric-note">0 条</span>
+                  </div>
+                  <div id="conversationList" class="list-stack admin-scroll"></div>
+                </section>
+
+                <section class="panel inner-panel detail-panel">
+                  <div class="panel-head">
+                    <div>
+                      <p class="section-kicker">会话详情</p>
+                      <h2>选中会话</h2>
+                    </div>
+                    <div class="detail-tags" id="detailTags"></div>
+                  </div>
+                  <div id="conversationDetail" class="panel-stack admin-detail-scroll"></div>
+                </section>
+              </div>
+            </section>
+
+            <section class="admin-tab-panel" data-tab-panel="ops">
+              <div class="analytics-grid compact-analytics-grid">
+                <section class="panel inner-panel">
+                  <div class="panel-head">
+                    <div>
+                      <p class="section-kicker">问题热度排行</p>
+                      <h2>高频问题</h2>
+                    </div>
+                  </div>
+                  <div id="questionHeat" class="list-stack"></div>
+                </section>
+
+                <section class="panel inner-panel">
+                  <div class="panel-head">
+                    <div>
+                      <p class="section-kicker">未命中问题池</p>
+                      <h2>待补库问题</h2>
+                    </div>
+                  </div>
+                  <div id="unmatchedPool" class="list-stack"></div>
+                </section>
+
+                <section class="panel inner-panel">
+                  <div class="panel-head">
+                    <div>
+                      <p class="section-kicker">过期资料提醒</p>
+                      <h2>需要复核的资料</h2>
+                    </div>
+                  </div>
+                  <div id="staleDocs" class="list-stack"></div>
+                </section>
+              </div>
+            </section>
+
+            <section class="admin-tab-panel" data-tab-panel="repair">
+              <div class="analytics-grid maintenance-grid">
+                <section class="panel inner-panel">
+                  <div class="panel-head">
+                    <div>
+                      <p class="section-kicker">FAQ 别名维护</p>
+                      <h2>维护命中词</h2>
+                    </div>
+                  </div>
+                  <form id="aliasForm" class="form-stack">
+                    <label>
+                      <span class="mini-label">别名词</span>
+                      <input name="alias" type="text" placeholder="例如：平台报名号怎么填" required />
+                    </label>
+                    <div class="form-stack two-col">
+                      <label>
+                        <span class="mini-label">FAQ ID</span>
+                        <input name="faq_id" type="text" placeholder="例如：faq-001" required />
+                      </label>
+                      <label>
+                        <span class="mini-label">FAQ 标题</span>
+                        <input name="faq_question" type="text" placeholder="对应 FAQ 原问题" required />
+                      </label>
+                    </div>
+                    <label>
+                      <span class="mini-label">说明</span>
+                      <textarea name="note" rows="3" placeholder="记录为什么需要补这个别名。"></textarea>
+                    </label>
+                    <button class="primary-button" type="submit">新增 / 更新别名</button>
+                  </form>
+                  <div id="aliasList" class="list-stack section-list-gap"></div>
+                </section>
+
+                <section class="panel inner-panel">
+                  <div class="panel-head">
+                    <div>
+                      <p class="section-kicker">坏案例转修复项</p>
+                      <h2>人工修正沉淀</h2>
+                    </div>
+                  </div>
+                  <form id="repairForm" class="form-stack">
+                    <div class="form-stack two-col">
+                      <label>
+                        <span class="mini-label">修复类型</span>
+                        <select name="kind">
+                          <option value="faq">FAQ 修复</option>
+                          <option value="rule">规则修订</option>
+                          <option value="prompt">提示词优化</option>
+                          <option value="manual">仅人工备注</option>
+                        </select>
+                      </label>
+                      <label>
+                        <span class="mini-label">标题</span>
+                        <input name="title" type="text" placeholder="例如：B2 优待身份命中不足" required />
+                      </label>
+                    </div>
+                    <label>
+                      <span class="mini-label">问题描述</span>
+                      <textarea name="problem" rows="3" placeholder="坏案例表现、误答点、触发场景。" required></textarea>
+                    </label>
+                    <label>
+                      <span class="mini-label">人工修正结果</span>
+                      <textarea name="manual_reply" rows="3" placeholder="人工客服最终给出的修正口径。"></textarea>
+                    </label>
+                    <label>
+                      <span class="mini-label">修复建议</span>
+                      <textarea name="proposed_fix" rows="4" placeholder="建议新增 FAQ、修改规则或补充文档引用。" required></textarea>
+                    </label>
+                    <div class="form-stack two-col">
+                      <label>
+                        <span class="mini-label">同步生成 FAQ 别名（可选）</span>
+                        <input name="create_alias" type="text" placeholder="例如：优才卡工作地在松山湖怎么办" />
+                      </label>
+                      <label>
+                        <span class="mini-label">别名说明（可选）</span>
+                        <input name="alias_note" type="text" placeholder="例如：来自人工纠偏案例" />
+                      </label>
+                    </div>
+                    <div class="toolbar-row">
+                      <button class="primary-button" type="submit">沉淀修复项</button>
+                      <span id="selectedConversationTip" class="metric-note">将自动关联当前选中的会话</span>
+                    </div>
+                  </form>
+                  <div id="repairList" class="list-stack section-list-gap"></div>
+                </section>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    <script type="module" src="/static/admin.js"></script>
+  </body>
+</html>

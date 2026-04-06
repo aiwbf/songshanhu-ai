@@ -1,0 +1,133 @@
+{
+  "knowledge_year": 2025,
+  "current_date": "2026-03-08",
+  "default_handoff_message": "建议联系官方招生渠道或人工坐席复核。",
+  "official_contact": "松山湖招生服务热线：0769-38881212",
+  "source_priorities": [
+    {
+      "pattern": "1、入学政策参考资料（市级）",
+      "tier": 1,
+      "label": "市级或官方政策文件 PDF"
+    },
+    {
+      "pattern": "2、2024年松山湖公办学位申请指南",
+      "tier": 2,
+      "label": "2024 年松山湖入学申请指南 PDF"
+    },
+    {
+      "pattern": "3、2024年松山湖及东莞市招生入学平台操作指引",
+      "tier": 3,
+      "label": "2024 年平台操作指引 PDF"
+    },
+    {
+      "pattern": "5、答疑｜有关2024松山湖秋季招生，你可能想知道这些（一、二）",
+      "tier": 4,
+      "label": "官方答疑 PDF"
+    },
+    {
+      "pattern": "机器人业务文档（2024合并修订版）.csv",
+      "tier": 5,
+      "label": "FAQ/CSV 文档"
+    },
+    {
+      "pattern": "咨询服务相关情况.docx",
+      "tier": 6,
+      "label": "其他补充文档"
+    },
+    {
+      "pattern": "4、一图读懂｜2024年松山湖中小学、幼儿园入学申请",
+      "tier": 6,
+      "label": "其他补充文档"
+    }
+  ],
+  "latest_patterns": [
+    "最新政策",
+    "最新规定",
+    "现在还能",
+    "今年还能",
+    "今年是否",
+    "今年政策",
+    "现在政策",
+    "目前政策",
+    "2025",
+    "2026",
+    "今年最新",
+    "当前最新"
+  ],
+  "handoff_patterns": [
+    "包过",
+    "稳进",
+    "一定能",
+    "保证录取",
+    "内部名额",
+    "走关系",
+    "概率多大",
+    "审核会不会过",
+    "排名会不会",
+    "百分之百"
+  ],
+  "intents": [
+    {
+      "name": "类别判断",
+      "keywords": ["属于哪类", "报哪类", "A类", "B类", "C类", "类别", "分到哪类"],
+      "required_fields": ["child_hukou", "parent_hukou", "parent_work_in_songshanhu", "has_songshanhu_property", "property_owner", "stage", "is_transfer"]
+    },
+    {
+      "name": "报名资格判断",
+      "keywords": ["能不能申请", "是否可以申请", "能否申请", "有资格", "资格", "符合条件", "可以报吗"],
+      "required_fields": ["child_hukou", "parent_hukou", "parent_work_in_songshanhu", "has_songshanhu_property", "property_owner", "stage", "is_transfer", "special_status"]
+    },
+    {
+      "name": "材料清单",
+      "keywords": ["材料", "资料", "证明", "提交什么", "要什么材料"],
+      "required_fields": ["stage", "special_status"]
+    },
+    {
+      "name": "平台操作",
+      "keywords": ["平台", "注册", "账号", "登录", "申请网址", "怎么操作", "怎么填", "如何提交", "解锁页面"],
+      "required_fields": []
+    },
+    {
+      "name": "房产锁定/解锁",
+      "keywords": ["锁定", "解锁", "房子", "房产", "房锁", "房产锁定"],
+      "required_fields": ["has_songshanhu_property", "property_owner"]
+    },
+    {
+      "name": "转学",
+      "keywords": ["转学", "插班"],
+      "required_fields": ["is_transfer", "stage"]
+    },
+    {
+      "name": "幼儿园申请",
+      "keywords": ["幼儿园", "小班", "中班", "大班"],
+      "required_fields": ["stage", "child_hukou", "parent_work_in_songshanhu", "has_songshanhu_property"]
+    },
+    {
+      "name": "积分入学",
+      "keywords": ["积分", "C类", "非户籍", "积分入学"],
+      "required_fields": ["child_hukou", "parent_hukou", "parent_work_in_songshanhu", "has_songshanhu_property"]
+    },
+    {
+      "name": "政策依据查询",
+      "keywords": ["政策依据", "哪条规定", "文件依据", "来源", "出自哪里", "根据什么"],
+      "required_fields": []
+    },
+    {
+      "name": "超出范围",
+      "keywords": ["高考奖金", "大学奖励", "贷款", "买房政策"],
+      "required_fields": []
+    }
+  ],
+  "field_labels": {
+    "child_hukou": "孩子户籍所在地",
+    "parent_hukou": "父母户籍所在地",
+    "parent_work_in_songshanhu": "父母是否在松山湖工作",
+    "employer_type": "父母工作单位性质",
+    "has_songshanhu_property": "是否有松山湖房产",
+    "property_owner": "房产权属关系",
+    "stage": "申请学段或年级",
+    "is_transfer": "是否为转学",
+    "special_status": "是否属于人才、优待、企业指标等特殊情形",
+    "dongguan_household": "是否为东莞户籍"
+  }
+}

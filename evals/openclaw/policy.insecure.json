@@ -1,0 +1,26 @@
+{
+  "allowlist": {
+    "enabled": false,
+    "default_open_mode": true,
+    "protected_channels": ["wechat", "feishu"],
+    "targets": {
+      "feishu": []
+    }
+  },
+  "group": {
+    "require_mention": false,
+    "channels": ["wechat", "feishu"]
+  },
+  "pairing": {
+    "enabled": false,
+    "channels": ["wechat", "feishu"]
+  },
+  "fallback": {
+    "mode": "direct_answer",
+    "allow_direct_answer": true
+  },
+  "routing": {
+    "session_key_fields": ["sender_id"],
+    "allow_cross_channel_thread_reuse": true
+  }
+}

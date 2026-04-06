@@ -1,0 +1,334 @@
+{
+  "suite": "core_regression",
+  "cases": [
+    {
+      "id": "a1-grandparent-property",
+      "suite": "regression",
+      "topic": "A1 / A3",
+      "coverage_tags": ["A1"],
+      "question": "父母不在松山湖工作，且户籍不在松山湖，孩子户籍在松山湖（户籍跟爷爷），父母园区没有房产（房产属于爷爷）属于哪类？",
+      "release_blocker": true,
+      "failure_mode_ids": ["wrong_category_a_b_c", "insufficient_info_hard_judgment", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "类别判断",
+        "expected_labels": ["A1"],
+        "forbidden_labels": ["A3"],
+        "expect_any_evidence": true,
+        "max_source_tier": 5
+      }
+    },
+    {
+      "id": "a2-vs-b2-choice",
+      "suite": "regression",
+      "topic": "A2",
+      "coverage_tags": ["A2", "B2"],
+      "question": "孩子与父母都有松山湖户籍，父母在园区没有房产，且父母在松山湖机关和事业单位工作，请问可以同时申报A2类、B2类吗？还是只能选择一类申报？",
+      "release_blocker": true,
+      "failure_mode_ids": ["wrong_category_a_b_c", "simultaneous_b3_c_denial", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "类别判断",
+        "expected_labels": ["A2", "B2", "只能任选一个"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "a3-definition",
+      "suite": "regression",
+      "topic": "A3",
+      "coverage_tags": ["A3"],
+      "question": "A3类中“学童和父（母）是松山湖家庭户，但学童与房产所有人非直系亲属关系”是什么意思？",
+      "release_blocker": false,
+      "failure_mode_ids": ["wrong_category_a_b_c", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "类别判断",
+        "expected_labels": ["A3", "房产交易", "父母名下无房产"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "b1-one-year-rule",
+      "suite": "regression",
+      "topic": "B1",
+      "coverage_tags": ["B1"],
+      "question": "B1要求在该企业工作满一年，是按什么时间计算？",
+      "release_blocker": false,
+      "failure_mode_ids": ["wrong_category_a_b_c", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "政策依据查询",
+        "expected_labels": ["B1", "8 月 31 日", "满 1 年"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "b2-enterprise-talent",
+      "suite": "regression",
+      "topic": "B2",
+      "coverage_tags": ["B2"],
+      "question": "我有优才卡，工作地在松山湖，应该选择哪个类别来进行申请？",
+      "release_blocker": true,
+      "failure_mode_ids": ["wrong_category_a_b_c", "wrong_special_program_mapping", "faq_as_policy"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "类别判断",
+        "expected_labels": ["优才卡", "B2", "B2.2"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "b3-ranking",
+      "suite": "regression",
+      "topic": "B3",
+      "coverage_tags": ["B3"],
+      "question": "B3类会公布排名吗？根据排名安排学校吗？",
+      "release_blocker": false,
+      "failure_mode_ids": ["wrong_category_a_b_c", "faq_as_policy"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "政策依据查询",
+        "expected_labels": ["B3", "不公布排名", "分数线"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "c-points-admission",
+      "suite": "regression",
+      "topic": "C",
+      "coverage_tags": ["C"],
+      "question": "全家均无园区户籍，也没有房产，也没在园区工作，但在松山湖居住，这个情况能否通过C类申报松山湖学位？",
+      "release_blocker": false,
+      "failure_mode_ids": ["wrong_category_a_b_c", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "积分入学",
+        "expected_labels": ["C类", "东莞市外", "居住证"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "youcai-card-b2",
+      "suite": "regression",
+      "topic": "优才卡",
+      "coverage_tags": ["优才卡", "B2"],
+      "question": "我有优才卡，工作单位在松山湖，可以申请义务教育阶段学位吗？",
+      "release_blocker": true,
+      "failure_mode_ids": ["wrong_special_program_mapping", "official_doc_priority_inversion"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "expected_labels": ["优才卡", "B2"],
+        "expect_any_evidence": true,
+        "expected_evidence_file_terms": ["优才卡", "答疑｜有关2024松山湖秋季招生"]
+      }
+    },
+    {
+      "id": "youyue-card",
+      "suite": "regression",
+      "topic": "优粤卡",
+      "coverage_tags": ["优粤卡"],
+      "question": "优粤卡持卡人子女申请松山湖义务教育学位，应该按什么政策口径理解？",
+      "release_blocker": true,
+      "failure_mode_ids": ["wrong_special_program_mapping", "official_doc_priority_inversion"],
+      "expect": {
+        "allowed_statuses": ["answered", "handoff"],
+        "expected_labels": ["优粤卡"],
+        "expect_any_evidence": true,
+        "expected_evidence_file_terms": ["优粤卡"]
+      }
+    },
+    {
+      "id": "hk-macao-child",
+      "suite": "regression",
+      "topic": "香港/澳门学童",
+      "coverage_tags": ["香港/澳门学童"],
+      "question": "孩子是香港/澳门户籍，父母服务地/居住地/户籍地在松山湖或在松山湖拥有产权清晰的自有居所，如何申请入学？",
+      "release_blocker": true,
+      "failure_mode_ids": ["wrong_special_program_mapping", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "expected_labels": ["香港", "澳门", "优才卡", "积分入学"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "taiwan-student",
+      "suite": "regression",
+      "topic": "台湾学生",
+      "coverage_tags": ["台湾学生"],
+      "question": "台湾籍子女入学怎样申请？",
+      "release_blocker": true,
+      "failure_mode_ids": ["wrong_special_program_mapping", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "expected_labels": ["台湾", "B2", "申请书", "通行证"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "overseas-chinese",
+      "suite": "regression",
+      "topic": "华侨华人",
+      "coverage_tags": ["华侨华人"],
+      "question": "华人华侨子女如何申请园区学位？",
+      "release_blocker": true,
+      "failure_mode_ids": ["wrong_special_program_mapping", "official_doc_priority_inversion"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "expected_labels": ["华侨", "市侨务局", "市教育局"],
+        "expect_any_evidence": true,
+        "expected_evidence_file_terms": ["华侨华人"]
+      }
+    },
+    {
+      "id": "property-lock",
+      "suite": "regression",
+      "topic": "房产锁定",
+      "coverage_tags": ["房产锁定"],
+      "question": "什么情况下房产会被锁定？",
+      "release_blocker": false,
+      "failure_mode_ids": ["property_lock_unlock_confusion", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "房产锁定/解锁",
+        "expected_labels": ["房产", "锁定", "A1", "家庭户"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "property-unlock",
+      "suite": "regression",
+      "topic": "房产解锁",
+      "coverage_tags": ["解锁"],
+      "question": "如何对学位申请房进行解锁？",
+      "release_blocker": false,
+      "failure_mode_ids": ["property_lock_unlock_confusion", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "房产锁定/解锁",
+        "expected_labels": ["解锁", "申请解锁", "等待审核"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "profile-update",
+      "suite": "regression",
+      "topic": "资料修改",
+      "coverage_tags": ["资料修改"],
+      "question": "报名时，我发现我上传的资料有误，如何进行修改？",
+      "release_blocker": false,
+      "failure_mode_ids": ["unit_account_process_confusion", "faq_as_policy"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "平台操作",
+        "expected_labels": ["修改资料", "未审核", "审核不通过"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "unit-account-registration",
+      "suite": "regression",
+      "topic": "单位账号注册",
+      "coverage_tags": ["单位账号注册与审核"],
+      "question": "哪种类型所在的单位需注册单位账号？",
+      "release_blocker": false,
+      "failure_mode_ids": ["unit_account_process_confusion", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "平台操作",
+        "expected_labels": ["A2", "B类", "单位账号"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "unit-account-review",
+      "suite": "regression",
+      "topic": "单位审核",
+      "coverage_tags": ["单位账号注册与审核"],
+      "question": "A2、B类提交报名申请后需要做什么工作？",
+      "release_blocker": false,
+      "failure_mode_ids": ["unit_account_process_confusion", "citation_wrong_source"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "question_type": "平台操作",
+        "expected_labels": ["审核", "单位", "后续积分排名"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "b1-quota-query",
+      "suite": "regression",
+      "topic": "B1 名额查询",
+      "coverage_tags": ["B1 名额查询"],
+      "question": "企业如何查询B1类企业名额？",
+      "release_blocker": true,
+      "failure_mode_ids": ["b1_quota_realtime_hallucination", "faq_as_policy"],
+      "expect": {
+        "allowed_statuses": ["answered", "handoff"],
+        "question_type": "平台操作",
+        "expected_labels": ["B1", "管理员账号", "5月11日"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "simultaneous-b3-and-c",
+      "suite": "regression",
+      "topic": "同时申请 B3 与 C",
+      "coverage_tags": ["同时申请 B3 与 C", "B3", "C"],
+      "question": "松山湖的B3类企业积分制人才和C类东莞市非户籍适龄儿童少年积分制入学可以同时申请吗？",
+      "release_blocker": true,
+      "failure_mode_ids": ["simultaneous_b3_c_denial", "wrong_category_a_b_c"],
+      "expect": {
+        "allowed_statuses": ["answered"],
+        "expected_labels": ["B3", "C类", "可同时申请"],
+        "expect_any_evidence": true
+      }
+    },
+    {
+      "id": "ambiguous-group-question",
+      "suite": "regression",
+      "topic": "群聊中模糊发问",
+      "coverage_tags": ["群聊中模糊发问"],
+      "question": "群里有人问：这种情况能上吗？",
+      "release_blocker": true,
+      "failure_mode_ids": ["insufficient_info_hard_judgment", "pii_leak_in_group"],
+      "expect": {
+        "allowed_statuses": ["need_info", "handoff"],
+        "followup_expected": true,
+        "required_missing_fields": ["孩子户籍在哪里？", "父母是否在松山湖工作？", "是否有松山湖房产？"],
+        "hallucination_safe_max_status": "need_info"
+      }
+    },
+    {
+      "id": "non-admissions-question",
+      "suite": "regression",
+      "topic": "非招生问题误入",
+      "coverage_tags": ["非招生问题误入"],
+      "question": "顺便问下买房补贴怎么申请？",
+      "release_blocker": true,
+      "failure_mode_ids": ["out_of_scope_false_positive"],
+      "expect": {
+        "allowed_statuses": ["out_of_scope", "handoff"],
+        "question_type": "超出范围",
+        "hallucination_safe_max_status": "handoff"
+      }
+    },
+    {
+      "id": "historical-policy-asked-as-current",
+      "suite": "regression",
+      "topic": "历史政策误问为当前政策",
+      "coverage_tags": ["历史政策误问为当前政策"],
+      "question": "2026年优才卡政策还和2024一样吗？",
+      "release_blocker": true,
+      "failure_mode_ids": ["historical_as_current", "latest_policy_misuse", "missed_handoff"],
+      "expect": {
+        "allowed_statuses": ["handoff"],
+        "handoff_expected": true,
+        "timeliness_guard_expected": true,
+        "expected_labels": ["2024", "最新", "无法"],
+        "hallucination_safe_max_status": "handoff"
+      }
+    }
+  ]
+}

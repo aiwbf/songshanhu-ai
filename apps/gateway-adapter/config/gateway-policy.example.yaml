@@ -1,0 +1,37 @@
+conversation_strategies:
+  dm:
+    intent: direct_consultation
+    keep_context: true
+    enable_pairing: true
+    require_mention: false
+    allow_attachments: true
+
+  group:
+    intent: guarded_group_consultation
+    keep_context: true
+    enable_pairing: true
+    require_mention: true
+    allow_attachments: false
+
+  admin:
+    intent: internal_operations
+    keep_context: true
+    enable_pairing: strict
+    require_mention: false
+    allow_attachments: true
+
+safety_switches:
+  default_pairing_mode: opt_in
+  reject_unbound_channels: true
+  reject_when_allowlist_miss: true
+  reject_when_mention_required_and_missing: true
+  silence_unknown_group_messages: true
+
+fallback_templates:
+  service_unavailable: >
+    当前咨询服务暂时不可用。为避免误答，本次不直接给出政策结论。
+    请稍后重试，或转人工渠道复核。
+  low_confidence: >
+    当前信息不足或依据不稳定，暂不直接下结论。请补充关键信息，或转人工复核。
+  stale_policy: >
+    当前仅检索到历史资料，无法确认是否仍为最新政策。请以最新官方通知为准，并建议人工复核。

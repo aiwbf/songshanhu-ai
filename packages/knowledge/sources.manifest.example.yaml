@@ -1,0 +1,31 @@
+sources:
+  - source_id: policy-2024-guide
+    title: 2024年松山湖中小学、幼儿园入学申请指南
+    relative_path: 2、2024年松山湖公办学位申请指南/2024年松山湖中小学、幼儿园入学申请指南.pdf
+    source_type: pdf
+    policy_level: district
+    policy_year: 2024
+    freshness_status: historical
+    notes: Do not present as current policy without newer verification.
+
+  - source_id: policy-2024-platform
+    title: 2024年松山湖及东莞市招生入学平台操作指引
+    relative_path: 3、2024年松山湖及东莞市招生入学平台操作指引/2024年松山湖及东莞市招生入学平台操作指引.pdf
+    source_type: pdf
+    policy_level: district
+    policy_year: 2024
+    freshness_status: historical
+
+  - source_id: faq-merged-2024
+    title: 机器人业务文档（2024合并修订版）
+    relative_path: 机器人业务文档（2024合并修订版）.csv
+    source_type: faq_csv
+    policy_level: operational
+    policy_year: 2024
+    freshness_status: historical
+
+ingestion_defaults:
+  chunk_size: 900
+  overlap: 120
+  keep_page_numbers: true
+  require_source_id: true

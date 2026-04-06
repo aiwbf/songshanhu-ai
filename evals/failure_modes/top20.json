@@ -1,0 +1,144 @@
+{
+  "failure_modes": [
+    {
+      "id": "faq_as_policy",
+      "title": "误把 FAQ 当正式政策",
+      "severity": "critical",
+      "symptom": "直接把 FAQ 或答疑口径当作最终政策结论输出。",
+      "fix_direction": "答案生成时强制做 source tier 检查，FAQ 只能作为补充解释，正式结论必须引用官方 PDF 或政策文件。"
+    },
+    {
+      "id": "historical_as_current",
+      "title": "误把历史文件当现行口径",
+      "severity": "critical",
+      "symptom": "用户问“今年/现在/最新”时，系统沿用 2024 资料直接回答。",
+      "fix_direction": "对时效词建立硬拦截，命中后必须提示知识边界并转人工或要求核对最新公告。"
+    },
+    {
+      "id": "insufficient_info_hard_judgment",
+      "title": "缺关键信息仍硬判类别或资格",
+      "severity": "critical",
+      "symptom": "未拿到户籍、房产、工作、学段等关键信息就直接判 A/B/C。",
+      "fix_direction": "按 intent 维护最小必要字段集，缺任一关键字段时只允许 `need_info` 或 `handoff`。"
+    },
+    {
+      "id": "pii_leak_in_group",
+      "title": "群聊泄露过多个人资料",
+      "severity": "critical",
+      "symptom": "回复中复述身份证号、手机号、住址、房产地址等敏感信息。",
+      "fix_direction": "在入站和出站统一做 PII 脱敏，群聊模式默认只保留必要摘要。"
+    },
+    {
+      "id": "missed_handoff",
+      "title": "该转人工未转",
+      "severity": "critical",
+      "symptom": "平台实时状态、名额、概率、审核结果等问题没有转人工。",
+      "fix_direction": "把实时状态、概率承诺、人工裁量类问题列为强制 handoff 模式。"
+    },
+    {
+      "id": "channel_route_mixup",
+      "title": "渠道路由错乱导致串会话",
+      "severity": "critical",
+      "symptom": "不同群、不同私聊或不同渠道共享了同一上下文。",
+      "fix_direction": "路由键必须至少包含 channel、target 和 thread_id / sender_id / conversation_id 之一。"
+    },
+    {
+      "id": "latest_policy_misuse",
+      "title": "时效风险漏报",
+      "severity": "high",
+      "symptom": "回答里没有明确提示“当前仅依据 2024 年资料”。",
+      "fix_direction": "统一在答案模板中注入知识年份边界，并在 latest intent 下升级为 hard block。"
+    },
+    {
+      "id": "mentionless_group_reply",
+      "title": "群聊未点名也触发机器人回复",
+      "severity": "high",
+      "symptom": "群聊里模糊提问也被机器人自动应答。",
+      "fix_direction": "群聊 requireMention 默认开启，未点名时只允许静默或安全 no-op。"
+    },
+    {
+      "id": "unpaired_delivery",
+      "title": "未配对来源也允许发送",
+      "severity": "high",
+      "symptom": "pairing 关闭后，未知来源可直接触发外发。",
+      "fix_direction": "高风险渠道默认要求 pairing，未配对仅允许 dry-run。"
+    },
+    {
+      "id": "unsafe_fallback_direct_answer",
+      "title": "fallback 不安全直接放行",
+      "severity": "high",
+      "symptom": "安全校验失败后仍直接把模型答案发送到渠道。",
+      "fix_direction": "fallback 仅允许 safe handoff 或 dry-run，禁止 direct answer。"
+    },
+    {
+      "id": "wrong_category_a_b_c",
+      "title": "A/B/C 分类错误",
+      "severity": "high",
+      "symptom": "把 A1 判成 A3、把 B3 判成 C，或误判能否同时申报。",
+      "fix_direction": "对类别问题单独建结构化分类器，并增加 A1/A2/A3/B1/B2/B3/C 回归集。"
+    },
+    {
+      "id": "wrong_special_program_mapping",
+      "title": "特殊项目映射错误",
+      "severity": "high",
+      "symptom": "优才卡、优粤卡、台湾、港澳、华侨等特殊人群被映射到错误类别。",
+      "fix_direction": "在规则层维护 special program 映射表，并要求输出特殊项目标签。"
+    },
+    {
+      "id": "property_lock_unlock_confusion",
+      "title": "房产锁定与解锁规则混淆",
+      "severity": "high",
+      "symptom": "把“锁定条件”和“解锁条件”混在一起回答。",
+      "fix_direction": "拆分 property_lock / property_unlock intent，并分别校验引用来源。"
+    },
+    {
+      "id": "unit_account_process_confusion",
+      "title": "单位账号注册与审核流程混淆",
+      "severity": "high",
+      "symptom": "把单位开户注册、信息更新、企业审核、教育部门审核混成一步。",
+      "fix_direction": "把单位账号注册、信息更新、单位审核、教育部门审核拆成独立流程卡片。"
+    },
+    {
+      "id": "b1_quota_realtime_hallucination",
+      "title": "B1 名额问题被静态知识误答",
+      "severity": "high",
+      "symptom": "把名额是否还有、何时导入、平台是否可见等实时问题静态回答。",
+      "fix_direction": "B1 名额查询统一归入平台实时状态问题，默认转人工。"
+    },
+    {
+      "id": "simultaneous_b3_c_denial",
+      "title": "误判 B3 与 C 不能同时申请",
+      "severity": "medium",
+      "symptom": "把“可同时申请”说成只能二选一，或相反。",
+      "fix_direction": "将“是否可同时申报”纳入专门的逻辑规则与回归样本。"
+    },
+    {
+      "id": "out_of_scope_false_positive",
+      "title": "非招生问题误入",
+      "severity": "medium",
+      "symptom": "买房补贴、贷款、大学奖励等非招生问题被当作招生问题回答。",
+      "fix_direction": "在 scope detector 中增加负面领域词和检索缺失联合判定。"
+    },
+    {
+      "id": "citation_wrong_source",
+      "title": "引用来源错误或不匹配",
+      "severity": "medium",
+      "symptom": "结论引用了不相关文档，或 citation 与结论不相符。",
+      "fix_direction": "引文必须从最终使用的 evidence 集合里选，并在回归中校验 source tier 与 file name。"
+    },
+    {
+      "id": "official_doc_priority_inversion",
+      "title": "官方文件优先级倒挂",
+      "severity": "medium",
+      "symptom": "当 PDF 与 FAQ 并存时，系统优先使用低优先级来源。",
+      "fix_direction": "检索排序按 source tier 增加更强惩罚，回答时优先展示官方来源。"
+    },
+    {
+      "id": "stale_faq_overrides_pdf",
+      "title": "过时 FAQ 覆盖正式 PDF",
+      "severity": "medium",
+      "symptom": "FAQ 中的旧年限、旧截止日覆盖了 PDF 中的新时间。",
+      "fix_direction": "对时间、截止日、年限字段做 cross-source consistency check，冲突时强制 handoff。"
+    }
+  ]
+}

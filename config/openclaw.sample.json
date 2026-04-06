@@ -1,0 +1,75 @@
+{
+  "service": {
+    "listenHost": "${OPENCLAW_GATEWAY_HOST:-127.0.0.1}",
+    "listenPort": "${OPENCLAW_GATEWAY_PORT:-8010}",
+    "orchestratorBaseUrl": "${CONSULTATION_ORCHESTRATOR_URL:-http://127.0.0.1:8000}",
+    "orchestratorPath": "${CONSULTATION_ORCHESTRATOR_PATH:-/api/consultation/orchestrate}",
+    "timeoutMs": "${CONSULTATION_ORCHESTRATOR_TIMEOUT_MS:-6000}"
+  },
+  "security": {
+    "defaultDeny": true,
+    "headerName": "${OPENCLAW_SHARED_TOKEN_HEADER:-X-OpenClaw-Token}",
+    "sharedToken": "${OPENCLAW_SHARED_TOKEN:-change-me-in-production}",
+    "allowlist": {
+      "channels": [
+        "feishu",
+        "wechat_service",
+        "webchat"
+      ],
+      "senders": [],
+      "peers": [
+        "oc_test",
+        "ops_demo",
+        "admissions-ops-console",
+        "local-parent-demo"
+      ]
+    },
+    "pairing": {
+      "required": true,
+      "trustedSenders": [
+        "ops_console_bot",
+        "manual_support_console"
+      ],
+      "metadataKey": "paired"
+    }
+  },
+  "routing": {
+    "group": {
+      "requireMention": true
+    },
+    "perSenderSession": true,
+    "fallbackAgent": "${OPENCLAW_FALLBACK_AGENT:-fallback-human-handoff}",
+    "channelBindings": {
+      "default": {
+        "routeMode": "parent_consultation",
+        "requireMention": true,
+        "perSenderSession": true,
+        "senderRoles": []
+      },
+      "unit_admin_console": {
+        "routeMode": "organization_admin",
+        "requireMention": false,
+        "perSenderSession": true,
+        "senderRoles": [
+          "unit_admin",
+          "organization_admin"
+        ]
+      },
+      "operations_console": {
+        "routeMode": "operations_support",
+        "requireMention": false,
+        "perSenderSession": true,
+        "senderRoles": [
+          "operations",
+          "human_support"
+        ]
+      },
+      "webchat": {
+        "routeMode": "parent_consultation",
+        "requireMention": false,
+        "perSenderSession": true,
+        "senderRoles": []
+      }
+    }
+  }
+}

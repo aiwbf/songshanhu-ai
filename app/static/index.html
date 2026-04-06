@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>松山湖入学咨询</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <section class="assistant-card">
+          <div class="assistant-avatar" aria-hidden="true">咨</div>
+          <div>
+            <p class="eyebrow">Admission Assistant</p>
+            <h1>松山湖入学咨询</h1>
+            <p class="subtitle">
+              我会尽量像一个稳定的招生咨询坐席来回复你。每次答复都会给出当前结论、建议信息，以及我暂时不能确认的理由。
+            </p>
+          </div>
+        </section>
+
+        <section class="sidebar-panel">
+          <div class="sidebar-head">
+            <h2>控制台</h2>
+            <button id="refreshHealthBtn" class="ghost-button" type="button">刷新状态</button>
+          </div>
+          <div class="control-stack">
+            <label class="toggle">
+              <input id="preferLlmInput" type="checkbox" />
+              <span>允许 LLM 做证据摘要</span>
+            </label>
+            <button id="newConversationBtn" class="primary-button" type="button">新建咨询</button>
+          </div>
+          <div id="healthBar" class="status-pills">
+            <span class="pill muted">连接中</span>
+          </div>
+        </section>
+
+        <section class="sidebar-panel">
+          <div class="sidebar-head">
+            <h2>会话历史</h2>
+            <span id="historyCount" class="sidebar-meta">0 条</span>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </section>
+      </aside>
+
+      <main class="chat-pane">
+        <section class="welcome-strip">
+          <div class="welcome-avatar" aria-hidden="true">咨</div>
+          <div>
+            <p class="welcome-title">欢迎咨询</p>
+            <p class="welcome-copy">
+              你可以直接问问题，也可以继续补充户籍、房产、工作、学段等条件。我会在当前会话里记住这些上下文。
+            </p>
+          </div>
+        </section>
+
+        <section class="chat-card">
+          <div id="conversationMeta" class="conversation-meta hidden"></div>
+          <div id="messageList" class="message-list"></div>
+
+          <div class="composer-card">
+            <div class="example-row">
+              <button class="example-chip" data-question="我家孩子能报哪一类？" type="button">类别判断</button>
+              <button class="example-chip" data-question="孩子是东莞其他镇街户籍，父母在松山湖工作，没有房产，小学一年级，不是转学。" type="button">补充条件</button>
+              <button class="example-chip" data-question="什么情况下不能申请松山湖公办中小学转学？" type="button">转学限制</button>
+              <button class="example-chip" data-question="2026 年最新政策是什么？" type="button">最新政策</button>
+            </div>
+
+            <form id="chatForm" class="composer-form">
+              <textarea
+                id="messageInput"
+                rows="4"
+                placeholder="请输入你的咨询问题，或继续补充当前会话中的条件。"
+                required
+              ></textarea>
+              <div class="composer-actions">
+                <p class="hint">每次回复都会给出咨询建议；如果我不能直接确认，也会明确说明原因。</p>
+                <button id="sendBtn" class="primary-button" type="submit">发送咨询</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

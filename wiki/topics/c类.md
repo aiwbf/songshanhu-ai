@@ -1,0 +1,50 @@
+# C类
+
+## Summary
+- 关联知识源数量: 10
+- 覆盖年份: 2023、2024、2025
+
+## Key facts
+- [2025年松山湖中小学、幼儿园入学申请指南](../sources/guide_songshanhu_2025.md)
+- [2025年东莞市人民政府关于印发《东莞市非户籍适龄儿童少年积分入读公办义务教育学校实施方案》的通知](../sources/policy_dg_points_2025.md)
+- [2025年机器人业务文档（2025合并修订版）(1)](../sources/business_faq_2025_pdf.md)
+- [答疑｜有关2024松山湖秋季招生，你可能想知道这些](../sources/faq_songshanhu_official_2024_part1.md)
+- [机器人业务文档（2024合并修订版）XLS](../sources/business_faq_2024_xls.md)
+- [机器人业务文档（2024合并修订版）CSV](../sources/business_faq_2024_csv.md)
+- [一图读懂｜2024年松山湖中小学、幼儿园入学申请](../sources/faq_songshanhu_infographic_2024.md)
+- [2024年松山湖及东莞市招生入学平台操作指引](../sources/ops_songshanhu_platform_2024.md)
+- [2024年松山湖中小学、幼儿园入学申请指南](../sources/guide_songshanhu_2024.md)
+- [东莞市非户籍适龄儿童少年积分入读公办义务教育学校实施方案](../sources/policy_dg_points_2023.md)
+
+## Detailed notes
+- 代表性片段:
+- `guide_songshanhu_2025` / 2025年松山湖中小学、幼儿园入学申请指南 / 第 1 页 / 1 / 38
+- `policy_dg_points_2025` / 2025年东莞市人民政府关于印发《东莞市非户籍适龄儿童少年积分入读公办义务教育学校实施方案》的通知 / 第 1 页 / 东莞市人民政府文件
+- `business_faq_2025_pdf` / 2025年机器人业务文档（2025合并修订版）(1) / 第 1 页 / 序号 常见问题 可报类别 参考答案
+- `faq_songshanhu_official_2024_part1` / 答疑｜有关2024松山湖秋季招生，你可能想知道这些 / 第 1 页 / 相关链接
+- `business_faq_2024_xls` / 机器人业务文档（2024合并修订版）XLS / 第 1 页 / 什么情况下不能申请松山湖公办中小学转学?
+- `business_faq_2024_csv` / 机器人业务文档（2024合并修订版）CSV / 第 1 页 / 什么情况下不能申请松山湖公办中小学转学?
+- `faq_songshanhu_infographic_2024` / 一图读懂｜2024年松山湖中小学、幼儿园入学申请 / 第 1 页 / 相关链接
+- `ops_songshanhu_platform_2024` / 2024年松山湖及东莞市招生入学平台操作指引 / 第 1 页 / 相关链接
+- `guide_songshanhu_2024` / 2024年松山湖中小学、幼儿园入学申请指南 / 第 1 页 / 1 / 42
+- `policy_dg_points_2023` / 东莞市非户籍适龄儿童少年积分入读公办义务教育学校实施方案 / 第 1 页 / 东莞市人民政府文件
+
+## Relationships
+- 年份页面: [2023](../years/2023.md)
+- 年份页面: [2024](../years/2024.md)
+- 年份页面: [2025](../years/2025.md)
+
+## Sources
+- `guide_songshanhu_2025`
+- `policy_dg_points_2025`
+- `business_faq_2025_pdf`
+- `faq_songshanhu_official_2024_part1`
+- `business_faq_2024_xls`
+- `business_faq_2024_csv`
+- `faq_songshanhu_infographic_2024`
+- `ops_songshanhu_platform_2024`
+- `guide_songshanhu_2024`
+- `policy_dg_points_2023`
+
+## Last updated
+2026-04-05

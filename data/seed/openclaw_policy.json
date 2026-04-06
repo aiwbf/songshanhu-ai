@@ -1,0 +1,58 @@
+{
+  "allowlist": {
+    "enabled": true,
+    "default_open_mode": false,
+    "protected_channels": [
+      "feishu",
+      "wechat",
+      "wechat_service",
+      "webchat"
+    ],
+    "targets": {
+      "feishu": [
+        "oc_test",
+        "ops_demo",
+        "admissions-ops-console"
+      ],
+      "wechat": [
+        "oc_test"
+      ],
+      "wechat_service": [
+        "oc_test"
+      ],
+      "webchat": [
+        "local-parent-demo"
+      ]
+    }
+  },
+  "group": {
+    "require_mention": true,
+    "channels": [
+      "feishu",
+      "wechat",
+      "wechat_service"
+    ]
+  },
+  "pairing": {
+    "enabled": true,
+    "channels": [
+      "feishu",
+      "wechat",
+      "wechat_service"
+    ]
+  },
+  "fallback": {
+    "mode": "safe_handoff",
+    "allow_direct_answer": false
+  },
+  "routing": {
+    "session_key_fields": [
+      "channel",
+      "target",
+      "conversation_id",
+      "thread_id",
+      "sender_id"
+    ],
+    "allow_cross_channel_thread_reuse": false
+  }
+}

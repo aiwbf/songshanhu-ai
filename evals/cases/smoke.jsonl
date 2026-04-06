@@ -1,0 +1,2 @@
+{"case_id":"smoke-001","channel":"openclaw:wechat","mode":"dm","message":"我家孩子今年申请小学，应该看哪一类？","expected":"need_more_info_or_classification"}
+{"case_id":"smoke-002","channel":"openclaw:wechat","mode":"group","message":"@招生助手 房产锁定后还能改资料吗？","expected":"process_explanation_with_evidence"}

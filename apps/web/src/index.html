@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>松山湖入学咨询</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="parent-page">
+    <div class="page-shell">
+      <aside class="sidebar">
+        <section class="brand-card assistant-brand">
+          <div class="assistant-hero">
+            <div class="assistant-avatar" aria-hidden="true">咨</div>
+            <div>
+              <p class="eyebrow">Admission Assistant</p>
+              <h1>松山湖入学咨询</h1>
+              <p class="subtitle">
+                这是一个专用智能咨询助手。你可以像和招生坐席聊天一样连续提问；如果要做资格预判，也可以直接在对话里补充户籍、工作、房产、学段等条件。
+              </p>
+            </div>
+          </div>
+          <div class="toolbar-row">
+            <button id="refreshBtn" class="ghost-button" type="button">刷新状态</button>
+            <button id="newConversationBtn" class="primary-button" type="button">新建会话</button>
+          </div>
+          <div id="healthBar" class="status-pills">
+            <span class="pill">连接中</span>
+          </div>
+        </section>
+
+        <section class="panel history-panel">
+          <div class="panel-head">
+            <div>
+              <p class="section-kicker">会话记录</p>
+              <h2>最近咨询</h2>
+            </div>
+            <span id="historyCount" class="metric-note">0 条</span>
+          </div>
+          <p class="meta-copy">
+            当前页面支持连续对话、复制客服回复和人工转接。涉及资格预判时，系统会记住你已经补充过的条件。
+          </p>
+          <div id="historyList" class="history-list"></div>
+        </section>
+      </aside>
+
+      <main class="main-shell parent-main-shell">
+        <section class="hero welcome-banner compact-hero">
+          <div class="welcome-avatar" aria-hidden="true">咨</div>
+          <div>
+            <p class="eyebrow">Welcome</p>
+            <h2>直接提问，系统会边回答边记住上下文</h2>
+            <p class="hero-copy">
+              每次回答都会给出当前判断、下一步建议，以及系统暂时不能直接确认的理由。如果涉及最新政策或实时审核状态，系统会明确提醒边界，不会强答。
+            </p>
+          </div>
+        </section>
+
+        <section class="panel workspace-panel assistant-workspace compact-workspace">
+          <div class="panel-head">
+            <div>
+              <p class="section-kicker">专用智能咨询助手</p>
+              <h2>连续对话</h2>
+            </div>
+            <span id="conversationMeta" class="metric-note">未选择会话</span>
+          </div>
+
+          <div class="quick-row">
+            <button class="quick-chip" data-question="今年的最新政策是怎样的，简单说一下。" type="button">最新政策</button>
+            <button class="quick-chip" data-question="我家孩子能报哪一类？" type="button">类别判断</button>
+            <button
+              class="quick-chip"
+              data-question="帮我做资格预判，孩子是东莞其他镇街户籍，父母在松山湖工作，没有房产，小学一年级，不是转学。"
+              type="button"
+            >
+              资格预判
+            </button>
+            <button class="quick-chip" data-question="什么情况下不能申请松山湖公办中小学转学？" type="button">转学限制</button>
+          </div>
+
+          <div id="chatTimeline" class="chat-scroll assistant-chat"></div>
+
+          <form id="chatForm" class="composer">
+            <textarea
+              id="chatInput"
+              rows="4"
+              placeholder="请输入你的咨询问题，或继续补充当前会话里的条件。"
+              required
+            ></textarea>
+            <div class="split-row composer-footer">
+              <p class="hint">例如：今年最新政策怎样；或者：孩子是非东莞户籍，父母在松山湖工作，没有房产，小学一年级。</p>
+              <button class="primary-button" type="submit">发送咨询</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    <script type="module" src="/static/parent.js"></script>
+  </body>
+</html>
