@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: songshanhu-ai
+    runtime: python
+    buildCommand: |
+      python -m pip install -r requirements.txt
+      python scripts/build_knowledge.py
+      python scripts/import_sources.py
+    startCommand: uvicorn app.server:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ACTIVE_KNOWLEDGE_YEAR
+        value: "2025"
+      - key: KNOWLEDGE_YEAR
+        value: "2025"
+      - key: OPENCLAW_ENABLE_SEND
+        value: "0"
+      - key: LLM_ENABLE
+        value: "0"
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: ADMIN_SESSION_SECRET
+        generateValue: true
+      - key: OPENCLAW_SHARED_TOKEN
+        generateValue: true
+      - key: OFFICIAL_CONTACT
+        value: 松山湖招生服务热线：0769-38881212
