@@ -1,15 +1,15 @@
 # Eval Report
 
-- Generated at: 2026-03-16T15:01:45.767378+00:00
+- Generated at: 2026-04-13T14:24:44.415797+00:00
 - Dataset: `C:\Users\Administrator\myproj\2024\evals\datasets\core_regression.json`
 - Total cases: 22
-- Overall pass rate: 95.45%
+- Overall pass rate: 100.00%
 
 ## Metrics
 
 | Metric | Value |
 | --- | --- |
-| 分类准确率 | 95.45% |
+| 分类准确率 | 100.00% |
 | 必要追问准确率 | 100.00% |
 | 引用正确率 | 100.00% |
 | 幻觉率 | 0.00% |
@@ -22,8 +22,7 @@
 
 ## Failure Modes
 
-- `citation_wrong_source` 引用来源错误或不匹配 (1)
-- `wrong_category_a_b_c` A/B/C 分类错误 (1)
+- None
 
 ## OpenClaw Security Audit
 
@@ -41,7 +40,7 @@
 | --- | --- | --- | --- | --- |
 | `a1-grandparent-property` | A1 / A3 | answered | pass | ok |
 | `a2-vs-b2-choice` | A2 | answered | pass | ok |
-| `a3-definition` | A3 | answered | fail | question_type expected 类别判断, got 类别说明 |
+| `a3-definition` | A3 | answered | pass | ok |
 | `b1-one-year-rule` | B1 | answered | pass | ok |
 | `b2-enterprise-talent` | B2 | answered | pass | ok |
 | `b3-ranking` | B3 | answered | pass | ok |
